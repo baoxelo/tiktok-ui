@@ -87,11 +87,31 @@ $button-width: 52px;
     font-weight: 600;
     padding: 5px 12px;
 }
+
+.actions {
+    display: flex;
+    align-items: center;
+}
+
 .more-btn {
     font-size: 2rem;
     padding: 4px 8px;
     color: var(--black-theme-text);
     background-color: transparent;
     margin-left: 28px;
+    cursor: pointer;
+}
+.user-avatar {
+    height: 32px;
+    width: 32px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-left: 12px;
+    cursor: pointer;
+}
+.action-btn {
+    background-color: transparent;
+    padding: 4px 12px;
+    font-size: 2.2rem;
     cursor: pointer;
 }
