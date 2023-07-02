@@ -1,6 +1,4 @@
-$search-border: 92px;
-$search-height: 46px;
-$button-width: 52px;
+
 .wrapper {
     height: var(--default-layout-header-height);
     width: 100%;
@@ -16,78 +14,10 @@ $button-width: 52px;
     justify-content: space-between;
     padding: 0 var(--default-layout-horizontal-spacer);
 }
-.search, 
-.search-result {
-    width: 500px;
-}
-.search {
-    position: relative;
-    height: 46px;
-    padding-left: 16px;
-    background-color: var(--black-theme-background);
-    border-radius: $search-border;
-    border: 1px solid transparent;
-    display: flex;
 
-    .input {
-        font-weight: 400;
-        font-size: 1.6rem;
-        height: 100%;
-        flex: 1;
-        padding: 0;
-        color: var(--black-theme-text);
-        caret-color: var(--primary-color);
-        &:hover ~ .search-btn {
-            cursor: text;
-            background-color: rgba(255, 255, 255, 0.12);
-        }
-        &:not(:placeholder-shown) ~ .search-btn {
-            background-color: rgba(255, 255, 255, 0.12);
-        }
-    }
-    &::after {
-        content: "";
-        position: absolute;
-        top: 9px;
-        right: $button-width;
-        height: calc($search-height - 18px);
-        width: 1px;
-        background-color: rgba(255, 255, 255, .12);
-    }
-    &:focus-within {
-        border: 1px solid rgba(255, 255, 255, .2);
-    }
-}
-.clear,
-.loading {
-    position: absolute;
-    right: calc($button-width + 16px);
-    top: 50%;
-    transform: translateY(-50%);
-    color: rgba(255, 255, 255, .34);
-}
-.search-btn {
-    font-size: 1.8rem;
-    font-weight: 300;
-    width: $button-width;
-    height: 100%;
-    border-top-right-radius: $search-border;
-    border-bottom-right-radius: $search-border;
-    color: var(--black-theme-text);
-    &:hover {
-        cursor: pointer;
-        background-color: rgba(255, 255, 255, 0.12);
-    }
-    &:active {
-        background: rgba(255, 255, 255, .08);
-    }
-}
-.search-title {
-    font-size: 1.4rem;
-    font-weight: 600;
-    padding: 5px 12px;
-}
 
+
+//Action
 .actions {
     display: flex;
     align-items: center;
@@ -110,8 +40,34 @@ $button-width: 52px;
     cursor: pointer;
 }
 .action-btn {
+    position: relative;
+    display: inline-flex;
+    height: 32px;
+    width: 32px;
+    align-items: center;
     background-color: transparent;
-    padding: 4px 12px;
+    margin-left: 16px;
     font-size: 2.2rem;
     cursor: pointer;
+}
+.upload-btn {
+    margin-right: 12px;
+}
+.message-quantity {
+    position: absolute;
+    display: block;
+    top: -3px;
+    right: -5px;
+    height: 16px;
+    width: 20px;
+    background-color: var(--primary-color);
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    span {
+        display: block;
+        font-size: 1rem;
+        text-align: center;
+    }
 }
