@@ -4,7 +4,7 @@ import { faCircleXmark, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import HeadlessTippy from '@tippyjs/react/headless';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 
-import * as searchServices from '~/api-service/searchServices'
+import * as searchServices from '~/services/searchService'
 import AccountItem from '~/components/AccountItems';
 import { SearchIcon } from '~/components/Icons';
 import classNames from 'classnames/bind';
@@ -27,10 +27,10 @@ function Search() {
         inputRef.current.focus()
     }
     const onChangeInput = (e) => {
-        if(e.target.value === ' '){
-            return
+        const searchValue = e.target.value
+        if(!searchValue.startsWith(' ')){
+            setSearchValue(e.target.value)
         }
-        setSearchValue(e.target.value)
     }
     useEffect(() => {
         if(!debounce.trim()) {
@@ -50,7 +50,11 @@ function Search() {
         fetchApi()
     },[debounce])
     return ( 
-        <HeadlessTippy
+        //Interactive tippy element may not be accessible via keyboard navigation because it is not directly after the reference element in the DOM source order.
+        //  Using a wrapper <div> or <span> tag around the reference element solves this by creating a new parentNode context. 
+        //  Specifying `appendTo: document.body` silences this warning, but it assumes you are using a focus management solution to handle keyboard navigation. 
+        <div>
+            <HeadlessTippy
                 interactive
                 visible={searchResult.length>0 && showResult}
                 render={(attrs => (
@@ -87,12 +91,13 @@ function Search() {
                         )}
                         {loading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />}
                         
-                        <button className={cx('search-btn')}>
+                        <button className={cx('search-btn')} onMouseDown={(e) => e.preventDefault()}>
                             <SearchIcon className={cx('search-icon')}/>
                         </button>
     
                     </div>
-                </HeadlessTippy>
+            </HeadlessTippy>
+        </div>
     );
 }
 
