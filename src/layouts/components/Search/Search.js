@@ -12,12 +12,15 @@ import styles from './search.module.scss'
 import { useDebounce } from '~/hooks';
 const cx = classNames.bind(styles)
 function Search() {
+
     const [searchValue, setSearchValue] = useState('')
     const [searchResult, setSearchResult] = useState([])
-    const [showResult, setShowResult] = useState(true)
+    const [showResult, setShowResult] = useState(false)
     const [loading, setLoading] = useState(false)
+
     const inputRef = useRef()
-    const debounce = useDebounce(searchValue,500)
+    const debouncedValue = useDebounce(searchValue,500)
+
     const handleHideResult = () => {
         setShowResult(false)
     }
@@ -33,7 +36,7 @@ function Search() {
         }
     }
     useEffect(() => {
-        if(!debounce.trim()) {
+        if(!debouncedValue.trim()) {
             setSearchResult([])
             return
         }
@@ -41,14 +44,14 @@ function Search() {
         const fetchApi = async() => {
             setLoading(true)
 
-            const result = await searchServices.search(debounce);
+            const result = await searchServices.search(debouncedValue);
             setSearchResult(result)
 
             setLoading(false)
         }
 
         fetchApi()
-    },[debounce])
+    },[debouncedValue])
     return ( 
         //Interactive tippy element may not be accessible via keyboard navigation because it is not directly after the reference element in the DOM source order.
         //  Using a wrapper <div> or <span> tag around the reference element solves this by creating a new parentNode context. 

@@ -9,15 +9,16 @@ $search-height: 46px;
     position: relative;
     height: 46px;
     padding-left: 16px;
+    display: flex;
     background-color: var(--black-theme-background);
     border-radius: $search-border;
     border: 1px solid transparent;
-    display: flex;
 
-    .input {
+    input {
         font-weight: 400;
         font-size: 1.6rem;
         height: 100%;
+        margin-right: 40px;
         flex: 1;
         padding: 0;
         color: var(--black-theme-text);
@@ -27,7 +28,7 @@ $search-height: 46px;
             background-color: rgba(255, 255, 255, 0.12);
         }
         &:not(:placeholder-shown) ~ .search-btn {
-            background-color: rgba(255, 255, 255, 0.12);
+            color: rgba(255, 255, 255, 0.75);
         }
     }
     &::after {
@@ -72,6 +73,7 @@ $search-height: 46px;
     display: flex;
     align-items: center;
     justify-content: center;
+    color: rgba(255, 255, 255, .34);
     &:hover {
         cursor: pointer;
         background-color: rgba(255, 255, 255, 0.12);
@@ -82,9 +84,6 @@ $search-height: 46px;
     &:active {
         background: rgba(255, 255, 255, .08);
         
-    }
-    .search-icon {
-        color: rgba(255, 255, 255, 0.34);
     }
 }
 

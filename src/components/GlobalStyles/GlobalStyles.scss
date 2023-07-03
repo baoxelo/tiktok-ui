@@ -19,13 +19,13 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    color: var(--black-theme-text);
 
 }
 html {
     font-size: 62.5%;
 }
 body {
+    color: var(--black-theme-text);
     font-family: 'Roboto', sans-serif;
     font-size: 1.6rem;
     line-height: 1.5;
@@ -54,8 +54,8 @@ button, input, [tabindex] {
     background-color: transparent;
     
 }
-a[href] {
-    color: var(black-theme-text);
+a {
+    color: var(--text-color);
     text-decoration: none;
 }
 

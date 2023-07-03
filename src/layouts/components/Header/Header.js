@@ -49,6 +49,7 @@ const MENU_ITEMS = [
 ]
 function Header() {
     const currentUser = true
+
     const handleMenuChange = (menuItem) => {
         switch(menuItem.type) {
             case 'language':
@@ -101,7 +102,7 @@ function Header() {
                             <Tippy delay={[0, 200]} content="Notification" placement='bottom'>
                                 <button className={cx('action-btn')}>
                                     <NoticeIcon className={cx('notification')}/>
-                                    <div className={cx('message-quantity')}><span>22</span></div>
+                                    <div className={cx('message-quantity')}>22</div>
                                 </button>
                             </Tippy>
                         </>
